@@ -7,6 +7,7 @@ use Weixin::Middleware, 'your api token', '/your_app_root'
 
 configure do
     set :wx_id, 'your_weixin_account'
+set :public_folder, File.dirname(__FILE__) + '/bootstrap'
 end
 
 helpers do
@@ -24,6 +25,9 @@ get '/your_app_root' do
     params[:echostr]
 end
 
+get '/' do
+ erb :index
+end
 post '/your_app_root' do
     content_type :xml, 'charset' => 'utf-8'
 
